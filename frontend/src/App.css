@@ -1,0 +1,154 @@
+.landingPageContainer {
+  width: 100vw;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a1128 0%, #001233 50%, #0a1128 100%);
+  color: white;
+}
+
+.landingPageContainer nav {
+  padding-inline: 2rem;
+  padding-block: 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background: rgba(10, 17, 40, 0.7);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.landingPageContainer nav h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.landingPageContainer nav .navlist {
+  display: flex;
+  gap: 1.6rem;
+  cursor: pointer;
+  align-items: center;
+}
+
+.landingPageContainer nav .navlist p:hover {
+  color: #2D8CFF;
+  transition: color 0.2s ease;
+}
+
+.landingMainContainer {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 4rem;
+  min-height: 75vh;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.landingMainContainer > div:nth-child(1) {
+  font-size: 2.4rem;
+  max-width: 600px;
+}
+
+.landingMainContainer > div:nth-child(1) p {
+  font-size: 1.2rem;
+  color: #b8c4e0;
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+
+.landingMainContainer > div:nth-child(1) div[role='button'] {
+  background: #2D8CFF;
+  width: fit-content;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.landingMainContainer > div:nth-child(1) div[role='button']:hover {
+  background: #1a73e8;
+  transform: translateY(-2px);
+}
+
+.landingMainContainer > div:nth-child(1) div[role='button'] a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.landingMainContainer > div:nth-child(2) img {
+  height: 65vh;
+  width: auto;
+  filter: drop-shadow(0 20px 40px rgba(45, 140, 255, 0.3));
+}
+
+/* Feature highlights section */
+.featureSection {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  padding: 4rem 2rem;
+  flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.02);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.featureCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 220px;
+}
+
+.featureCard .featureIcon {
+  background: rgba(45, 140, 255, 0.15);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.featureCard h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.featureCard p {
+  font-size: 0.9rem;
+  color: #b8c4e0;
+}
+
+/* --- Home page (unused now, kept for now) --- */
+.navBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 20px;
+  text-align: center;
+}
+.meetContainer {
+  display: flex;
+  padding-inline: 20px;
+  height: 80vh;
+  gap: 10vw;
+  justify-content: center;
+}
+.leftPanel {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.rightPanel {
+  display: flex;
+  align-items: center;
+}
+.rightPanel > img {
+  width: 30vw;
+  height: auto;
+  border-radius: 20px;
+}
