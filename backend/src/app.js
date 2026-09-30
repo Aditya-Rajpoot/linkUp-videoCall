@@ -15,11 +15,19 @@ connectToSocket(server);
 
 app.use(
     cors({
-        origin: process.env.FRONTEND_URL || "*",
-        methods: ["GET", "POST", "PUT", "DELETE"],
+        origin: "https://link-up-video-call-sly1.vercel.app",
+        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        allowedHeaders: ["Content-Type", "Authorization"],
         credentials: true
     })
 );
+
+app.options("*", cors({
+    origin: "https://link-up-video-call-sly1.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true
+}));
 
 app.use(express.json({ limit: "40kb" }));
 
