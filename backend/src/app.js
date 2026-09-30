@@ -13,21 +13,26 @@ const server = createServer(app);
 
 connectToSocket(server);
 
-app.use(
-    cors({
-        origin: "https://link-up-video-call-sly1.vercel.app",
-        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-        allowedHeaders: ["Content-Type", "Authorization"],
-        credentials: true
-    })
-);
-
-app.options("*", cors({
+const corsOptions = {
     origin: "https://link-up-video-call-sly1.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
-}));
+};
+
+app.use(cors(corsOptions));
+
+app.use((req, res, next) => {
+    if (req.method === "OPTIONS") {
+        res.header("Access-Control-Allow-Origin", "https://link-up-video-call-sly1.vercel.app");
+        res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+        res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
+        res.header("Access-Control-Allow-Credentials", "true");
+        return res.sendStatus(204);
+    }
+
+    next();
+});
 
 app.use(express.json({ limit: "40kb" }));
 
