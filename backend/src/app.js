@@ -10,9 +10,8 @@ dotenv.config();
 
 const app = express();
 const server = createServer(app);
-connectToSocket(server);
 
-const PORT = process.env.PORT || 8000;
+connectToSocket(server);
 
 app.use(
     cors({
@@ -23,30 +22,31 @@ app.use(
 );
 
 app.use(express.json({ limit: "40kb" }));
-app.use(express.urlencoded({
-    limit: "40kb",
-    extended: true
-}));
+
+app.use(
+    express.urlencoded({
+        limit: "40kb",
+        extended: true
+    })
+);
 
 app.use("/api/v1/users", userRoutes);
 
-const start = async () => {
-    try {
-        const connectionDb = await mongoose.connect(
-            process.env.MONGO_URI
-        );
+app.get("/", (req, res) => {
+    res.status(200).json({
+        message: "LinkUp backend is running"
+    });
+});
 
+mongoose
+    .connect(process.env.MONGO_URI)
+    .then((connectionDb) => {
         console.log(
             `MONGO connected DB Host: ${connectionDb.connection.host}`
         );
+    })
+    .catch((error) => {
+        console.error("MongoDB connection error:", error);
+    });
 
-        server.listen(PORT, "0.0.0.0", () => {
-            console.log(`LISTENING ON PORT ${PORT}`);
-        });
-    } catch (error) {
-        console.error("Server startup error:", error);
-        process.exit(1);
-    }
-};
-
-start();
+export default server;
