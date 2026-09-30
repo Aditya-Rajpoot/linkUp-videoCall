@@ -8,7 +8,7 @@ export default function usePeerConnections({ connectionsRef, socketRef, socketId
         { urls: "stun:stun.l.google.com:19302" }
     ]);
 
-    useEffect(() => {
+   useEffect(() => {
         const fetchTurnCredentials = async () => {
             try {
                 const response = await fetch(`${server}/api/v1/users/get_turn_credentials`, {
@@ -17,7 +17,11 @@ export default function usePeerConnections({ connectionsRef, socketRef, socketId
                     }
                 });
                 const data = await response.json();
-                setIceServers(data);
+                if (Array.isArray(data)) {
+                    setIceServers(data);
+                } else {
+                    console.log("TURN credentials response was not an array, falling back to STUN only");
+                }
             } catch (e) {
                 console.log("Failed to fetch TURN credentials, using STUN only:", e);
             }
