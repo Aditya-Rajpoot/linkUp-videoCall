@@ -1,6 +1,6 @@
-let IS_PROD = false;  
+let IS_PROD = true;
 const server = IS_PROD ?
-    "https://apnacollegebackend.onrender.com" :
+    "https://link-up-video-call-ljwv.vercel.app" :
     "http://localhost:8000"
 
 export default server;
