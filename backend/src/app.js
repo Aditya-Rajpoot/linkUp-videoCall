@@ -14,7 +14,7 @@ const server = createServer(app);
 connectToSocket(server);
 
 const corsOptions = {
-    origin: "https://link-up-video-call-sly1.vercel.app",
+    origin: "https://link-up-video-call.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
